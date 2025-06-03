@@ -1,0 +1,5 @@
+<0> R=12 -1 <2> R=12 -1  #SUP: 389
+<0> R=12 ALSFRS-R=>=36 -1 <2> R=12 -1  #SUP: 364
+<0> ALSFRS-R=>=36 -1 <2> R=12 -1  #SUP: 388
+<0> ALSFRS-R=>=36 -1 <2> ALSFRSsT=[4,8[ -1  #SUP: 347
+<0> ALSFRS-R=>=36 -1 <2> ALSFRS-R=>=36 -1  #SUP: 360
