@@ -6,6 +6,8 @@ This project aims to predict the need for Non-Invasive Ventilation (NIV) in Amyo
 
 This project is based on a reduced part of the work published by Martins et al. (https://ieeexplore.ieee.org/document/9426397).
 
+This project was completed for the Data Mining (Prospecção de Dados) course.
+
 ## Project Structure
 
 ```
@@ -24,7 +26,6 @@ spmf.jar                            # Sequential Pattern Mining Framework (SPMF)
 -   Scikit-learn
 -   Matplotlib
 -   Seaborn
--   SPMF (Sequential Pattern Mining Framework)
 
 ## Setup
 
@@ -81,13 +82,6 @@ spmf.jar                            # Sequential Pattern Mining Framework (SPMF)
     *   The 20% minimum support configuration shows improved stability with lower standard deviation.
 *   **Patient Clustering:**
     *   Patient clustering based on sequential patterns reveals subgroups with different NIV rates.
-
-## Recommendations
-
-*   Consider ensemble methods combining temporal and static features.
-*   Investigate feature engineering techniques for temporal sequences.
-*   Validate findings on external datasets.
-*   Explore additional temporal features or longer observation windows.
 
 ## Team
 
