@@ -7615,6 +7615,17 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Libraries">Libraries<a class="anchor-link" href="#Libraries">¶</a></h4>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7631,6 +7642,7 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mcolors</span>
 </pre></div>
 </div>
 </div>
@@ -7644,12 +7656,22 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#increase the display width to see the full sequence</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.max_colwidth'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.max_colwidth'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">'seaborn-v0_8'</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s2">"husl"</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Helper-Functions">Helper Functions<a class="anchor-link" href="#Helper-Functions">¶</a></h4>
 </div>
 </div>
 </div>
@@ -7686,7 +7708,6 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
     <span class="n">item_mapping</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">item_counter</span> <span class="o">=</span> <span class="mi">1</span>
 
-    <span class="c1"># Define all possible feature-value pairs</span>
     <span class="n">all_features</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">'ALSFRSb'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'&lt;4'</span><span class="p">,</span> <span class="s1">'[4,8['</span><span class="p">,</span> <span class="s1">'[8,12['</span><span class="p">,</span> <span class="s1">'12'</span><span class="p">],</span>
         <span class="s1">'ALSFRSsUL'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'&lt;4'</span><span class="p">,</span> <span class="s1">'[4,8['</span><span class="p">,</span> <span class="s1">'[8,12['</span><span class="p">,</span> <span class="s1">'12'</span><span class="p">],</span>
@@ -7696,7 +7717,6 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
         <span class="s1">'ALSFRS-R'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'&lt;12'</span><span class="p">,</span> <span class="s1">'[12,24['</span><span class="p">,</span> <span class="s1">'[24,36['</span><span class="p">,</span> <span class="s1">'&gt;=36'</span><span class="p">]</span>
     <span class="p">}</span>
 
-    <span class="c1"># Pre-populate item_mapping with all possible items</span>
     <span class="k">for</span> <span class="n">feature</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">all_features</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
             <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span>
@@ -7705,10 +7725,9 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
                 <span class="n">item_counter</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">for</span> <span class="n">ref</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'REF'</span><span class="p">):</span>
-        <span class="n">parts</span> <span class="o">=</span> <span class="p">[]</span>       <span class="c1"># for SPMF encoding</span>
-        <span class="n">parts_raw</span> <span class="o">=</span> <span class="p">[]</span>   <span class="c1"># for human‐readable</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">parts_raw</span> <span class="o">=</span> <span class="p">[]</span> 
         <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()):</span>
-            <span class="c1"># build encoded item list</span>
             <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">col</span> <span class="o">==</span> <span class="s1">'REF'</span><span class="p">:</span>
@@ -7718,7 +7737,6 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
                 <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">item_mapping</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
             <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"&lt;</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">&gt; "</span> <span class="o">+</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" -1"</span><span class="p">)</span>
 
-            <span class="c1"># build raw tuple</span>
             <span class="n">raw_items</span> <span class="o">=</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
                                  <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span> <span class="o">!=</span> <span class="s1">'REF'</span><span class="p">)</span>
             <span class="n">parts_raw</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">raw_items</span><span class="si">}</span><span class="s2"> )"</span><span class="p">)</span>
@@ -7731,7 +7749,6 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
             <span class="s1">'Sequence_raw'</span><span class="p">:</span> <span class="n">sequence_raw</span>
         <span class="p">})</span>
 
-    <span class="c1"># build mapping header</span>
     <span class="n">mapping_str</span> <span class="o">=</span> <span class="s2">"@CONVERTED_FROM_TEXT</span><span class="se">\n</span><span class="s2">"</span>
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">item_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">mapping_str</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">"@ITEM=</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
@@ -7748,9 +7765,7 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">,</span> \
      <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fin</span><span class="p">:</span>
-            <span class="c1"># collect all time‐point tags like &lt;0&gt;, &lt;1&gt;</span>
             <span class="n">tps</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">'&lt;\s*(\d+)\s*&gt;'</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
-            <span class="c1"># if exactly one time‐point and it's "0", skip this line</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">tps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'0'</span><span class="p">:</span>
                 <span class="k">continue</span>
             <span class="n">fout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
@@ -7767,11 +7782,9 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
 
 <span class="k">def</span> <span class="nf">parse_sequence</span><span class="p">(</span><span class="n">raw</span><span class="p">):</span>
     <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="c1"># find every "(t, …)" chunk</span>
     <span class="k">for</span> <span class="n">content</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">'\(\s*\d+,\s*(.*?)\s*\)'</span><span class="p">,</span> <span class="n">raw</span><span class="p">):</span>
         <span class="n">toks</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
         <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-        <span class="c1"># every three tokens are feat, '=', val</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">toks</span><span class="p">),</span> <span class="mi">3</span><span class="p">):</span>
             <span class="n">feat</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="n">toks</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span>
             <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">feat</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -7790,8 +7803,6 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
             <span class="n">pat_str</span><span class="p">,</span> <span class="n">sup_str</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'#SUP:'</span><span class="p">)</span>
             <span class="n">enc_pattern</span> <span class="o">=</span> <span class="n">pat_str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
             <span class="n">support</span>     <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sup_str</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-
-            <span class="c1"># decode for human readability</span>
             <span class="n">sets</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">'&lt;(\d+)&gt;\s+(.*?)\s+-1'</span><span class="p">,</span> <span class="n">enc_pattern</span><span class="p">)</span>
             <span class="n">decoded</span> <span class="o">=</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">, "</span> <span class="o">+</span>
@@ -7801,23 +7812,19 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
                 <span class="k">for</span> <span class="n">t</span><span class="p">,</span><span class="n">items</span> <span class="ow">in</span> <span class="n">sets</span>
             <span class="p">)</span>
 
-            <span class="c1"># build set‐of‐sets for subsequence test</span>
             <span class="n">pat_sets</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">set</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="n">sets</span> <span class="p">]</span>
-
             <span class="n">hits</span> <span class="o">=</span> <span class="p">[</span>
                 <span class="n">row</span><span class="o">.</span><span class="n">REF</span>
                 <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sequences</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()</span>
                 <span class="k">if</span> <span class="n">is_subsequence</span><span class="p">(</span><span class="n">pat_sets</span><span class="p">,</span>
                                   <span class="n">parse_sequence</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">Sequence_raw</span><span class="p">))</span>
             <span class="p">]</span>
-
             <span class="n">records</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
                 <span class="s1">'pattern'</span><span class="p">:</span>         <span class="n">enc_pattern</span><span class="p">,</span>
                 <span class="s1">'decoded_pattern'</span><span class="p">:</span> <span class="n">decoded</span><span class="p">,</span>
                 <span class="s1">'support'</span><span class="p">:</span>         <span class="n">support</span><span class="p">,</span>
                 <span class="s1">'REF'</span><span class="p">:</span>             <span class="n">hits</span>
             <span class="p">})</span>
-
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">'support'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequences</span><span class="p">)</span>
@@ -7825,11 +7832,8 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
     <span class="k">return</span> <span class="n">df</span>
 
 <span class="k">def</span> <span class="nf">create_feature_visualization_by_timepoints</span><span class="p">(</span><span class="n">df_matches</span><span class="p">):</span>
-    <span class="c1"># Get unique timepoint counts</span>
     <span class="n">timepoint_counts</span> <span class="o">=</span> <span class="n">df_matches</span><span class="p">[</span><span class="s1">'pattern'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">'&lt;'</span><span class="p">))</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
     <span class="n">timepoint_counts</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">timepoint_counts</span><span class="p">)</span>
-    
-    <span class="c1"># First pass: collect all unique features across all timepoint groups</span>
     <span class="n">all_features</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">timepoints</span> <span class="ow">in</span> <span class="n">timepoint_counts</span><span class="p">:</span>
         <span class="n">patterns_subset</span> <span class="o">=</span> <span class="n">df_matches</span><span class="p">[</span><span class="n">df_matches</span><span class="p">[</span><span class="s1">'pattern'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">'&lt;'</span><span class="p">))</span> <span class="o">==</span> <span class="n">timepoints</span><span class="p">]</span>
@@ -7839,12 +7843,9 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
                 <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span>
                 <span class="n">all_features</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
     
-    <span class="c1"># Create a color mapping for all features</span>
-    <span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mcolors</span>
     <span class="n">colors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mcolors</span><span class="o">.</span><span class="n">TABLEAU_COLORS</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">mcolors</span><span class="o">.</span><span class="n">CSS4_COLORS</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
     <span class="n">feature_colors</span> <span class="o">=</span> <span class="p">{</span><span class="n">feature</span><span class="p">:</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">all_features</span><span class="p">))}</span>
     
-    <span class="c1"># Create subplots - 2 columns, calculate rows needed</span>
     <span class="n">n_timepoints</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">timepoint_counts</span><span class="p">)</span>
     <span class="n">n_cols</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="n">n_rows</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_timepoints</span> <span class="o">+</span> <span class="n">n_cols</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="n">n_cols</span>
@@ -7859,29 +7860,21 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
         <span class="n">row</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">//</span> <span class="n">n_cols</span>
         <span class="n">col</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">%</span> <span class="n">n_cols</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span>
-        
-        <span class="c1"># Filter patterns by timepoint count</span>
         <span class="n">patterns_subset</span> <span class="o">=</span> <span class="n">df_matches</span><span class="p">[</span><span class="n">df_matches</span><span class="p">[</span><span class="s1">'pattern'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">'&lt;'</span><span class="p">))</span> <span class="o">==</span> <span class="n">timepoints</span><span class="p">]</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Analyzing </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">patterns_subset</span><span class="p">)</span><span class="si">}</span><span class="s2"> patterns with </span><span class="si">{</span><span class="n">timepoints</span><span class="si">}</span><span class="s2"> timepoints"</span><span class="p">)</span>
         
-        <span class="c1"># Count all features for this timepoint group</span>
         <span class="n">feature_counts</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row_data</span> <span class="ow">in</span> <span class="n">patterns_subset</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-            <span class="c1"># Extract all features from decoded pattern</span>
             <span class="n">features</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(\w+(?:-\w+)?)\s*=\s*([^,)]+)'</span><span class="p">,</span> <span class="n">row_data</span><span class="p">[</span><span class="s1">'decoded_pattern'</span><span class="p">])</span>
             <span class="k">for</span> <span class="n">feature</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
                 <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span>
                 <span class="n">feature_counts</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">feature_counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
         
         <span class="k">if</span> <span class="n">feature_counts</span><span class="p">:</span>
-            <span class="c1"># Get top 5</span>
             <span class="n">top_5</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">feature_counts</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
             <span class="n">features</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">top_5</span><span class="p">)</span>
-            
-            <span class="c1"># Get colors for these specific features</span>
             <span class="n">bar_colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">feature_colors</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">]</span>
             
-            <span class="c1"># Plot with consistent colors</span>
             <span class="n">bars</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)),</span> <span class="n">counts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">bar_colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)))</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
@@ -7890,7 +7883,6 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
                         <span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
             
-            <span class="c1"># Add value labels</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bar</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bars</span><span class="p">):</span>
                 <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span><span class="o">*</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_y</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> 
                        <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">())</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'left'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
@@ -7902,15 +7894,12 @@ Groups should be registered in <a href="https://moodle.ciencias.ulisboa.pt/mod/g
             <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">timepoints</span><span class="si">}</span><span class="s1"> Timepoints'</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
             <span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">timepoints</span><span class="si">}</span><span class="s1">_timepoints'</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     
-    <span class="c1"># Hide empty subplots</span>
     <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">timepoint_counts</span><span class="p">),</span> <span class="n">n_rows</span> <span class="o">*</span> <span class="n">n_cols</span><span class="p">):</span>
         <span class="n">row</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">//</span> <span class="n">n_cols</span>
         <span class="n">col</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">%</span> <span class="n">n_cols</span>
         <span class="n">axes</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    
     <span class="k">return</span> <span class="n">results</span>
 </pre></div>
 </div>
@@ -8240,16 +8229,26 @@ Name: count, Length: 691, dtype: int64
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Unique-values-of-each-temporal-feature">Unique values of each temporal feature<a class="anchor-link" href="#Unique-values-of-each-temporal-feature">¶</a></h4>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [508]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#print the unique values in all columns except 'REF'</span>
-<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">temporal_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">temporal_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">col</span> <span class="o">!=</span> <span class="s1">'REF'</span><span class="p">:</span>
         <span class="n">unique_values</span> <span class="o">=</span> <span class="n">temporal_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Unique values in column '</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">':</span><span class="se">\n</span><span class="si">{</span><span class="n">unique_values</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -8514,16 +8513,26 @@ Unique values in column 'ALSFRS-R':
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Unique-intervals-of-each-temporal-feature">Unique intervals of each temporal feature<a class="anchor-link" href="#Unique-intervals-of-each-temporal-feature">¶</a></h4>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [513]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#print the unique values in all columns except 'REF'</span>
-<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">temporal_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">temporal_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">col</span> <span class="o">!=</span> <span class="s1">'REF'</span><span class="p">:</span>
         <span class="n">unique_values</span> <span class="o">=</span> <span class="n">temporal_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Unique values in column '</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">':</span><span class="se">\n</span><span class="si">{</span><span class="n">unique_values</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -8622,11 +8631,10 @@ Unique values in column 'ALSFRS-R':
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [515]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#print the number of patients</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sequences</span><span class="p">[</span><span class="s1">'REF'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sequences</span><span class="p">[</span><span class="s1">'REF'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
 </pre></div>
 </div>
 </div>
@@ -8796,11 +8804,10 @@ Unique values in column 'ALSFRS-R':
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [518]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># # min_support, min_gap of the time intervals (saltinhos entre os time points), max_gap, min_length of the sequences (quantidade de time points), max_length</span>
-<span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">"java -jar spmf.jar run Fournier08-Closed+time sequences.txt output.txt 25% 0 5 0 5"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">"java -jar spmf.jar run Fournier08-Closed+time sequences.txt output.txt 25% 0 5 0 5"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8811,10 +8818,21 @@ Unique values in column 'ALSFRS-R':
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[518]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>0</pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Remove-trivial-patterns-of-length-1">Remove trivial patterns of length 1<a class="anchor-link" href="#Remove-trivial-patterns-of-length-1">¶</a></h4>
 </div>
 </div>
 </div>
@@ -8842,6 +8860,17 @@ Unique values in column 'ALSFRS-R':
 <pre>Filtered file written to filtered_output.txt
 </pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Extract-the-patterns-from-txt-file">Extract the patterns from txt file<a class="anchor-link" href="#Extract-the-patterns-from-txt-file">¶</a></h4>
 </div>
 </div>
 </div>
@@ -8937,24 +8966,31 @@ Unique values in column 'ALSFRS-R':
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Binary-Matrix-Creation-from-Sequential-Patterns">Binary Matrix Creation from Sequential Patterns<a class="anchor-link" href="#Binary-Matrix-Creation-from-Sequential-Patterns">¶</a></h4>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [522]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Explode the REF column to have one row per REF-pattern combination</span>
-<span class="n">df_exploded</span> <span class="o">=</span> <span class="n">df_matches</span><span class="p">[[</span><span class="s1">'pattern'</span><span class="p">,</span> <span class="s1">'REF'</span><span class="p">]]</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">'REF'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_exploded</span> <span class="o">=</span> <span class="n">df_matches</span><span class="p">[[</span><span class="s1">'pattern'</span><span class="p">,</span> <span class="s1">'REF'</span><span class="p">]]</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">'REF'</span><span class="p">)</span>
 
-<span class="c1"># Create binary matrix using crosstab</span>
 <span class="n">binary_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df_exploded</span><span class="p">[</span><span class="s1">'REF'</span><span class="p">],</span> <span class="n">df_exploded</span><span class="p">[</span><span class="s1">'pattern'</span><span class="p">])</span>
 
-<span class="c1"># Convert to integer type (crosstab returns counts, but since each REF-pattern pair appears once, it's already binary)</span>
 <span class="n">binary_df</span> <span class="o">=</span> <span class="n">binary_df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
-<span class="c1"># Reset index to make REF a column instead of index</span>
 <span class="n">binary_df</span> <span class="o">=</span> <span class="n">binary_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Binary matrix shape: </span><span class="si">{</span><span class="n">binary_df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -8981,7 +9017,7 @@ Number of patterns: 5162
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[522]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -9221,16 +9257,26 @@ Number of patterns: 5162
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Aligning-DataFrames-with-Patient-IDs">Aligning DataFrames with Patient IDs<a class="anchor-link" href="#Aligning-DataFrames-with-Patient-IDs">¶</a></h4>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [524]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#remove the rows that have a 'REF' value that is not in the binary_df</span>
-<span class="n">evolution_df</span> <span class="o">=</span> <span class="n">evolution_df</span><span class="p">[</span><span class="n">evolution_df</span><span class="p">[</span><span class="s1">'REF'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">sequences</span><span class="p">[</span><span class="s1">'REF'</span><span class="p">])]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">evolution_df</span> <span class="o">=</span> <span class="n">evolution_df</span><span class="p">[</span><span class="n">evolution_df</span><span class="p">[</span><span class="s1">'REF'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">sequences</span><span class="p">[</span><span class="s1">'REF'</span><span class="p">])]</span>
 <span class="n">static_df</span> <span class="o">=</span> <span class="n">static_df</span><span class="p">[</span><span class="n">static_df</span><span class="p">[</span><span class="s1">'REF'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">sequences</span><span class="p">[</span><span class="s1">'REF'</span><span class="p">])]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">evolution_df</span><span class="p">[</span><span class="o">~</span><span class="n">evolution_df</span><span class="p">[</span><span class="s1">'REF'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">sequences</span><span class="p">[</span><span class="s1">'REF'</span><span class="p">])]))</span>
@@ -9250,341 +9296,6 @@ Number of patterns: 5162
 <pre>0
 0
 </pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [525]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">binary_df</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[525]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>pattern</th>
-<th>REF</th>
-<th>&lt;0&gt; ALSFRS-R=&gt;=36 -1 &lt;1&gt; ALSFRS-R=&gt;=36 -1</th>
-<th>&lt;0&gt; ALSFRS-R=&gt;=36 -1 &lt;1&gt; ALSFRS-R=&gt;=36 -1 &lt;2&gt; ALSFRS-R=&gt;=36 -1</th>
-<th>&lt;0&gt; ALSFRS-R=&gt;=36 -1 &lt;1&gt; ALSFRS-R=&gt;=36 -1 &lt;2&gt; ALSFRS-R=&gt;=36 -1 &lt;3&gt; ALSFRS-R=&gt;=36 -1</th>
-<th>&lt;0&gt; ALSFRS-R=&gt;=36 -1 &lt;1&gt; ALSFRS-R=&gt;=36 -1 &lt;2&gt; ALSFRS-R=&gt;=36 -1 &lt;3&gt; ALSFRS-R=&gt;=36 -1 &lt;4&gt; ALSFRS-R=&gt;=36 -1</th>
-<th>&lt;0&gt; ALSFRS-R=&gt;=36 -1 &lt;1&gt; ALSFRS-R=&gt;=36 -1 &lt;2&gt; ALSFRS-R=&gt;=36 -1 &lt;3&gt; ALSFRS-R=&gt;=36 -1 &lt;4&gt; R=12 -1</th>
-<th>&lt;0&gt; ALSFRS-R=&gt;=36 -1 &lt;1&gt; ALSFRS-R=&gt;=36 -1 &lt;2&gt; ALSFRS-R=&gt;=36 -1 &lt;3&gt; ALSFRSb=12 -1</th>
-<th>&lt;0&gt; ALSFRS-R=&gt;=36 -1 &lt;1&gt; ALSFRS-R=&gt;=36 -1 &lt;2&gt; ALSFRS-R=&gt;=36 -1 &lt;3&gt; ALSFRSb=12 ALSFRS-R=&gt;=36 -1</th>
-<th>&lt;0&gt; ALSFRS-R=&gt;=36 -1 &lt;1&gt; ALSFRS-R=&gt;=36 -1 &lt;2&gt; ALSFRS-R=&gt;=36 -1 &lt;3&gt; ALSFRSb=12 R=12 -1</th>
-<th>&lt;0&gt; ALSFRS-R=&gt;=36 -1 &lt;1&gt; ALSFRS-R=&gt;=36 -1 &lt;2&gt; ALSFRS-R=&gt;=36 -1 &lt;3&gt; ALSFRSsT=[4,8[ -1</th>
-<th>...</th>
-<th>&lt;0&gt; R=12 ALSFRS-R=&gt;=36 -1 &lt;3&gt; ALSFRSb=12 R=12 -1</th>
-<th>&lt;0&gt; R=12 ALSFRS-R=&gt;=36 -1 &lt;3&gt; ALSFRSsT=[4,8[ -1</th>
-<th>&lt;0&gt; R=12 ALSFRS-R=&gt;=36 -1 &lt;3&gt; ALSFRSsT=[4,8[ ALSFRS-R=&gt;=36 -1</th>
-<th>&lt;0&gt; R=12 ALSFRS-R=&gt;=36 -1 &lt;3&gt; ALSFRSsT=[4,8[ R=12 -1</th>
-<th>&lt;0&gt; R=12 ALSFRS-R=&gt;=36 -1 &lt;3&gt; ALSFRSsT=[4,8[ R=12 ALSFRS-R=&gt;=36 -1</th>
-<th>&lt;0&gt; R=12 ALSFRS-R=&gt;=36 -1 &lt;3&gt; ALSFRSsUL=[4,8[ -1</th>
-<th>&lt;0&gt; R=12 ALSFRS-R=&gt;=36 -1 &lt;3&gt; R=12 -1</th>
-<th>&lt;0&gt; R=12 ALSFRS-R=&gt;=36 -1 &lt;3&gt; R=12 -1 &lt;4&gt; R=12 -1</th>
-<th>&lt;0&gt; R=12 ALSFRS-R=&gt;=36 -1 &lt;3&gt; R=12 ALSFRS-R=&gt;=36 -1</th>
-<th>&lt;0&gt; R=12 ALSFRS-R=&gt;=36 -1 &lt;4&gt; R=12 -1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>...</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<th>1</th>
-<td>8</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>...</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<th>2</th>
-<td>9</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>...</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<th>3</th>
-<td>10</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>...</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<th>4</th>
-<td>14</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>...</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<th>...</th>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr>
-<th>686</th>
-<td>1795</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>...</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<th>687</th>
-<td>1814</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>...</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<th>688</th>
-<td>1818</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>...</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<th>689</th>
-<td>1877</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>...</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<th>690</th>
-<td>1878</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>...</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<p>691 rows × 5163 columns</p>
-</div>
 </div>
 </div>
 </div>
@@ -9683,16 +9394,26 @@ Number of patterns: 5162
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Checking-for-Missing-Values-in-Static-Features-DataFrame">Checking for Missing Values in Static Features DataFrame<a class="anchor-link" href="#Checking-for-Missing-Values-in-Static-Features-DataFrame">¶</a></h4>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [527]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#indicate null values in the static_df</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of nulls per column in static_df:</span><span class="se">\n</span><span class="si">{</span><span class="n">static_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of nulls per column in static_df:</span><span class="se">\n</span><span class="si">{</span><span class="n">static_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9763,6 +9484,17 @@ memory usage: 301.0+ KB
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Removing-Rows-with-Missing-BMI-Values">Removing Rows with Missing BMI Values<a class="anchor-link" href="#Removing-Rows-with-Missing-BMI-Values">¶</a></h4>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -9774,6 +9506,17 @@ memory usage: 301.0+ KB
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">static_df</span> <span class="o">=</span> <span class="n">static_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">'BMI at 1st visit'</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Handling-Missing-Values-in-Static-Features-DataFrame">Handling Missing Values in Static Features DataFrame<a class="anchor-link" href="#Handling-Missing-Values-in-Static-Features-DataFrame">¶</a></h4>
 </div>
 </div>
 </div>
@@ -10372,32 +10115,52 @@ memory usage: 90.3+ KB
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Selecting-Last-Timepoint-for-Each-Patient">Selecting Last Timepoint for Each Patient<a class="anchor-link" href="#Selecting-Last-Timepoint-for-Each-Patient">¶</a></h4>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [536]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#for each patient in the evolution_df and static_df, keep the last record for each REF</span>
-<span class="n">evolution_df</span> <span class="o">=</span> <span class="n">evolution_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'REF'</span><span class="p">)</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">evolution_df</span> <span class="o">=</span> <span class="n">evolution_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'REF'</span><span class="p">)</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">static_df</span> <span class="o">=</span> <span class="n">static_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'REF'</span><span class="p">)</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Merging-Static-Data-with-Binary-DataFrame">Merging Static Data with Binary DataFrame<a class="anchor-link" href="#Merging-Static-Data-with-Binary-DataFrame">¶</a></h4>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [537]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#'inner' por causa dos BMI nulos eliminados</span>
-<span class="n">binary_df</span> <span class="o">=</span> <span class="n">binary_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">static_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'REF'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'inner'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">binary_df</span> <span class="o">=</span> <span class="n">binary_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">static_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'REF'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'inner'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -10738,16 +10501,26 @@ memory usage: 90.3+ KB
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Encoding-Categorical-Variables-using-One-Hot-Encoding">Encoding Categorical Variables using One-Hot Encoding<a class="anchor-link" href="#Encoding-Categorical-Variables-using-One-Hot-Encoding">¶</a></h4>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [539]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#one hot encode the static features with 0 and 1</span>
-<span class="n">binary_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">binary_df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Gender'</span><span class="p">,</span> <span class="s1">'Revised El Escorial Criteria'</span><span class="p">,</span> <span class="s1">'Onset'</span><span class="p">,</span> <span class="s1">'MND familiar history'</span><span class="p">,</span> <span class="s1">'C9orf72'</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">binary_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">binary_df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Gender'</span><span class="p">,</span> <span class="s1">'Revised El Escorial Criteria'</span><span class="p">,</span> <span class="s1">'Onset'</span><span class="p">,</span> <span class="s1">'MND familiar history'</span><span class="p">,</span> <span class="s1">'C9orf72'</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -10896,16 +10669,26 @@ memory usage: 90.3+ KB
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Merging-Evolution-Data-with-Binary-DataFrame">Merging Evolution Data with Binary DataFrame<a class="anchor-link" href="#Merging-Evolution-Data-with-Binary-DataFrame">¶</a></h4>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [541]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#assign the evolution features to the binary_df</span>
-<span class="n">binary_df</span> <span class="o">=</span> <span class="n">binary_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">evolution_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'REF'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">binary_df</span> <span class="o">=</span> <span class="n">binary_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">evolution_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'REF'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -11267,14 +11050,11 @@ memory usage: 90.3+ KB
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [545]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">binary_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">'Evolution'</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">binary_df</span><span class="p">[</span><span class="s1">'Evolution'</span><span class="p">]</span>
-
-<span class="c1"># one‐hot encode all categorical columns</span>
-<span class="c1">#X_enc = pd.get_dummies(X, drop_first=True, dtype=int)</span>
 </pre></div>
 </div>
 </div>
@@ -11404,13 +11184,10 @@ memory usage: 90.3+ KB
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [547]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#print the distribution of the target variable</span>
-<span class="c1"># print(full_df['Evolution'].value_counts(normalize=True))</span>
-<span class="c1"># print(y.value_counts(normalize=True))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of refs: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">binary_df</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of refs: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">binary_df</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -11473,15 +11250,12 @@ memory usage: 90.3+ KB
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [548]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># define RF and stratified 5‐fold CV</span>
-<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-<span class="c1"># run CV on encoded data</span>
-<span class="c1">#scores = cross_val_score(rf, X_enc, y, cv=cv, scoring='accuracy')</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">'accuracy'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"5‐fold CV accuracy: </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
@@ -11540,6 +11314,17 @@ memory usage: 90.3+ KB
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Analyzing-Class-Distribution-and-Number-of-Sequential-Patterns">Analyzing Class Distribution and Number of Sequential Patterns<a class="anchor-link" href="#Analyzing-Class-Distribution-and-Number-of-Sequential-Patterns">¶</a></h4>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -11574,18 +11359,27 @@ Total sequential patterns discovered: 5162
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Characteristics-of-the-Patients">Characteristics of the Patients<a class="anchor-link" href="#Characteristics-of-the-Patients">¶</a></h4>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [594]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Dataset Overview Analysis</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
-<span class="c1"># 1.1 Distribution of patients by number of time-points</span>
 <span class="n">ref_counts</span> <span class="o">=</span> <span class="n">temporal_df</span><span class="p">[</span><span class="s1">'REF'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ref_counts</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#30aec2"</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Number of Time-points'</span><span class="p">)</span>
@@ -11593,9 +11387,7 @@ Total sequential patterns discovered: 5162
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Distribution of Patients by Time-points'</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-<span class="c1"># 1.2 Age distribution by NIV outcome (histogram)</span>
 <span class="k">if</span> <span class="s1">'Age at onset (years)'</span> <span class="ow">in</span> <span class="n">binary_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-    <span class="c1"># Create histogram with separate distributions</span>
     <span class="n">ages_no_niv</span> <span class="o">=</span> <span class="n">binary_df</span><span class="p">[</span><span class="n">binary_df</span><span class="p">[</span><span class="s1">'Evolution'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s1">'Age at onset (years)'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
     <span class="n">ages_niv</span> <span class="o">=</span> <span class="n">binary_df</span><span class="p">[</span><span class="n">binary_df</span><span class="p">[</span><span class="s1">'Evolution'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="s1">'Age at onset (years)'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
     
@@ -11609,7 +11401,6 @@ Total sequential patterns discovered: 5162
     <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">'Age data not available'</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'center'</span><span class="p">)</span>
     <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Age Distribution by NIV Outcome'</span><span class="p">)</span>
 
-<span class="c1"># 1.3 Gender distribution by NIV outcome</span>
 <span class="n">gender_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">binary_df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">'Gender_'</span> <span class="ow">in</span> <span class="n">col</span><span class="p">]</span>
 <span class="k">if</span> <span class="n">gender_cols</span><span class="p">:</span>
     <span class="n">gender_data</span> <span class="o">=</span> <span class="p">[]</span>
@@ -11627,10 +11418,8 @@ Total sequential patterns discovered: 5162
         <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Gender Distribution by NIV Outcome'</span><span class="p">)</span>
         <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">'No NIV'</span><span class="p">,</span> <span class="s1">'NIV Required'</span><span class="p">])</span>
 
-<span class="c1"># 1.4 Onset type distribution for NIV patients</span>
 <span class="n">onset_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">binary_df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">'Onset_'</span> <span class="ow">in</span> <span class="n">col</span><span class="p">]</span>
 <span class="k">if</span> <span class="n">onset_cols</span><span class="p">:</span>
-    <span class="c1"># Filter for patients requiring NIV (Evolution = 1)</span>
     <span class="n">niv_patients</span> <span class="o">=</span> <span class="n">binary_df</span><span class="p">[</span><span class="n">binary_df</span><span class="p">[</span><span class="s1">'Evolution'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
     
     <span class="n">onset_data</span> <span class="o">=</span> <span class="p">[]</span>
@@ -11646,7 +11435,6 @@ Total sequential patterns discovered: 5162
         <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">'Dataset Overview and Patient Demographics'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -11732,23 +11520,31 @@ The visualization confirms that the dataset is well-suited for discovering tempo
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Analyzing-Sequential-Pattern-Characteristics:-Support-and-Timepoints">Analyzing Sequential Pattern Characteristics: Support and Timepoints<a class="anchor-link" href="#Analyzing-Sequential-Pattern-Characteristics:-Support-and-Timepoints">¶</a></h4>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [636]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [688]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate the pattern discovery statistics</span>
-<span class="n">total_patterns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_matches</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">total_patterns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_matches</span><span class="p">)</span>
 
-<span class="c1"># Support threshold analysis</span>
 <span class="n">high_support</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_matches</span><span class="p">[</span><span class="n">df_matches</span><span class="p">[</span><span class="s1">'support_pct'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">35</span><span class="p">])</span>
 <span class="n">medium_support</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_matches</span><span class="p">[(</span><span class="n">df_matches</span><span class="p">[</span><span class="s1">'support_pct'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_matches</span><span class="p">[</span><span class="s1">'support_pct'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">35</span><span class="p">)])</span>
 <span class="n">lower_support</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_matches</span><span class="p">[(</span><span class="n">df_matches</span><span class="p">[</span><span class="s1">'support_pct'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">25</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_matches</span><span class="p">[</span><span class="s1">'support_pct'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">)])</span>
 
-<span class="c1"># Pattern complexity distribution</span>
 <span class="n">pattern_lengths</span> <span class="o">=</span> <span class="n">df_matches</span><span class="p">[</span><span class="s1">'pattern'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">'&lt;'</span><span class="p">))</span>
 <span class="n">complexity_counts</span> <span class="o">=</span> <span class="n">pattern_lengths</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 
@@ -11758,12 +11554,11 @@ The visualization confirms that the dataset is well-suited for discovering tempo
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"(30-35%): </span><span class="si">{</span><span class="n">medium_support</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"(25-30%): </span><span class="si">{</span><span class="n">lower_support</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Pattern complexity distribution:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Pattern timepoints distribution:"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">complexity_counts</span><span class="o">.</span><span class="n">index</span><span class="p">):</span>
     <span class="n">count</span> <span class="o">=</span> <span class="n">complexity_counts</span><span class="p">[</span><span class="n">length</span><span class="p">]</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  </span><span class="si">{</span><span class="n">length</span><span class="si">}</span><span class="s2"> timepoints: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> different patterns"</span><span class="p">)</span>
 
-<span class="c1"># Store data for visualizations</span>
 <span class="n">support_data</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">'≥35%'</span><span class="p">:</span> <span class="n">high_support</span><span class="p">,</span>
     <span class="s1">'30-35%'</span><span class="p">:</span> <span class="n">medium_support</span><span class="p">,</span>
@@ -11786,17 +11581,17 @@ The visualization confirms that the dataset is well-suited for discovering tempo
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Number of different sequential patterns discovered: 5162
+<pre>Number of different sequential patterns discovered: 15697
 Patterns by support threshold:
 (≥35%): 732
 (30-35%): 1025
 (25-30%): 3405
 
-Pattern complexity distribution:
-  2 timepoints: 1621 different patterns
-  3 timepoints: 2816 different patterns
-  4 timepoints: 721 different patterns
-  5 timepoints: 4 different patterns
+Pattern timepoints distribution:
+  2 timepoints: 2955 different patterns
+  3 timepoints: 7793 different patterns
+  4 timepoints: 4754 different patterns
+  5 timepoints: 195 different patterns
 </pre>
 </div>
 </div>
@@ -11807,13 +11602,11 @@ Pattern complexity distribution:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [642]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Combined visualization: Support threshold and Pattern complexity</span>
-<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-<span class="c1"># Left plot: Support threshold distribution (unchanged)</span>
 <span class="n">colors1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'#2E8B57'</span><span class="p">,</span> <span class="s1">'#4682B4'</span><span class="p">,</span> <span class="s1">'#CD853F'</span><span class="p">]</span>
 <span class="n">bars1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">support_data</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">support_data</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> 
                 <span class="n">color</span><span class="o">=</span><span class="n">colors1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
@@ -11825,14 +11618,12 @@ Pattern complexity distribution:
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">support_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 
-<span class="c1"># Add value labels on bars</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bar</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bars1</span><span class="p">):</span>
     <span class="n">height</span> <span class="o">=</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">height</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span><span class="o">/</span><span class="mf">2.</span><span class="p">,</span> <span class="n">height</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">support_data</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span><span class="o">*</span><span class="mf">0.01</span><span class="p">,</span>
                 <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'bottom'</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
 
-<span class="c1"># Right plot: Pattern complexity distribution (using complexity_data)</span>
 <span class="n">colors2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'#FF6B6B'</span><span class="p">,</span> <span class="s1">'#4ECDC4'</span><span class="p">,</span> <span class="s1">'#45B7D1'</span><span class="p">,</span> <span class="s1">'#96CEB4'</span><span class="p">]</span>
 <span class="n">bars2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">complexity_data</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">complexity_data</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> 
                 <span class="n">color</span><span class="o">=</span><span class="n">colors2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
@@ -11844,7 +11635,6 @@ Pattern complexity distribution:
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">complexity_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'right'</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 
-<span class="c1"># Add value labels on bars</span>
 <span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">bars2</span><span class="p">:</span>
     <span class="n">height</span> <span class="o">=</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">height</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -11898,6 +11688,17 @@ Pattern Complexity Sweet Spot: The peak at 3 timepoints suggests this temporal l
 <p>Temporal Granularity: The distribution suggests that while short-term changes (2-3 timepoints) are common and well-captured, longer-term identical progressions are rare, indicating that ALS patients tend to diverge in their progression trajectories over extended periods.</p>
 <p>Mining Efficiency: The results validate the choice of minimum 25% support and maximum 5 timepoints, as these parameters successfully captured a diverse range of patterns from common core progressions to rare but potentially clinically significant variants.</p>
 <p>This analysis provides crucial insights for both the subsequent classification task and clinical understanding of ALS progression patterns, demonstrating that the temporal pattern mining successfully extracted meaningful disease progression signatures from the longitudinal clinical data.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Feature-Visualization-by-Timepoints">Feature Visualization by Timepoints<a class="anchor-link" href="#Feature-Visualization-by-Timepoints">¶</a></h4>
 </div>
 </div>
 </div>
@@ -12018,18 +11819,7 @@ This analysis demonstrates that the sequential pattern mining successfully ident
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Experiments">Experiments<a class="anchor-link" href="#Experiments">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Minimum-Support-20%25">Minimum Support 20%<a class="anchor-link" href="#Minimum-Support-20%25">¶</a></h3>
+<h2 id="20%25-Minimum-Support-Sequential-Patterns">20% Minimum Support Sequential Patterns<a class="anchor-link" href="#20%25-Minimum-Support-Sequential-Patterns">¶</a></h2>
 </div>
 </div>
 </div>
@@ -12183,19 +11973,15 @@ This analysis demonstrates that the sequential pattern mining successfully ident
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [671]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Explode the REF column to have one row per REF-pattern combination</span>
-<span class="n">df_exploded</span> <span class="o">=</span> <span class="n">df_matches</span><span class="p">[[</span><span class="s1">'pattern'</span><span class="p">,</span> <span class="s1">'REF'</span><span class="p">]]</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">'REF'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_exploded</span> <span class="o">=</span> <span class="n">df_matches</span><span class="p">[[</span><span class="s1">'pattern'</span><span class="p">,</span> <span class="s1">'REF'</span><span class="p">]]</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">'REF'</span><span class="p">)</span>
 
-<span class="c1"># Create binary matrix using crosstab</span>
 <span class="n">binary_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df_exploded</span><span class="p">[</span><span class="s1">'REF'</span><span class="p">],</span> <span class="n">df_exploded</span><span class="p">[</span><span class="s1">'pattern'</span><span class="p">])</span>
 
-<span class="c1"># Convert to integer type (crosstab returns counts, but since each REF-pattern pair appears once, it's already binary)</span>
 <span class="n">binary_df</span> <span class="o">=</span> <span class="n">binary_df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
-<span class="c1"># Reset index to make REF a column instead of index</span>
 <span class="n">binary_df</span> <span class="o">=</span> <span class="n">binary_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Binary matrix shape: </span><span class="si">{</span><span class="n">binary_df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -12222,7 +12008,7 @@ Number of patterns: 15697
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[671]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -12917,7 +12703,7 @@ Name: count, dtype: int64
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [680]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">binary_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">'Evolution'</span><span class="p">)</span>
@@ -13078,15 +12864,12 @@ Name: count, dtype: int64
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [683]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># define RF and stratified 5‐fold CV</span>
-<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-<span class="c1"># run CV on encoded data</span>
-<span class="c1">#scores = cross_val_score(rf, X_enc, y, cv=cv, scoring='accuracy')</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">'accuracy'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"5‐fold CV accuracy: </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
